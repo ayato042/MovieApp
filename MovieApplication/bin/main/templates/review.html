@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>Comments</title>
+<style>
+body {
+	background-color: black;
+}
+
+h1 {
+	font-size: 40px;
+	color: #6666CC;
+	border-bottom: dashed 2px #6666CC;
+	text-align: center;
+}
+
+h2 {
+	color: white;
+	text-decoration: underline;
+}
+
+li {
+	list-style: none;
+	font-size: 25px;
+	margin: 10px 0px;
+	padding-right: 40px;
+}
+
+table {
+	padding-bottom: 30px;
+}
+
+td {
+	color: white;
+	text-align: left;
+	padding: 3px;
+}
+
+input {
+	font-size: 30px;
+	font-weight: bold;
+	background-color: black;
+	color: white;
+	border-style: none;
+}
+
+.contents {
+	display: flex;
+	justify-content: space-between;
+}
+
+.content {
+	padding: 30px 15px;
+}
+
+#back {
+	font-size: 40px;
+}
+</style>
+</head>
+<body>
+	<form th:action="@{/movie}" method="get">
+		<input id="back" type="submit" value="Back">
+	</form>
+	<h1>Comments</h1>
+	<div class="contents">
+		<div class="content">
+			<h2>5パーセントの奇跡</h2>
+			<table>
+				<tr th:each="comment : ${resultList}">
+					<td th:text="${comment.comment}"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="content">
+			<h2>REC/レック</h2>
+			<table>
+				<tr th:each="comment : ${resultList1}">
+					<td th:text="${comment.comment}"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="content">
+			<h2>レオン</h2>
+			<table>
+				<tr th:each="comment : ${resultList2}">
+					<td th:text="${comment.comment}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="contents">
+		<div class="content">
+			<h2>ショーシャンクの空に</h2>
+			<table>
+				<tr th:each="comment : ${resultList3}">
+					<td th:text="${comment.comment}"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="content">
+			<h2>第９地区</h2>
+			<table>
+				<tr th:each="comment : ${resultList4}">
+					<td th:text="${comment.comment}"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="content">
+			<h2>オデッセイ</h2>
+			<table>
+				<tr th:each="comment : ${resultList5}">
+					<td th:text="${comment.comment}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="contents">
+		<div class="content">
+			<h2>オブリビオン</h2>
+			<table>
+				<tr th:each="comment : ${resultList6}">
+					<td th:text="${comment.comment}"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="content">
+			<h2>グランド・イリュージョン</h2>
+			<table>
+				<tr th:each="comment : ${resultList7}">
+					<td th:text="${comment.comment}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function() {
+			$('input').hover(function() {
+				$(this).css("cursor", "pointer");
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>B-Movie</title>
+<style>
+body {
+	background-color: black;
+}
+
+section {
+	display: none;
+}
+
+h1 {
+	font-size: 40px;
+	color: #6666CC;
+	text-align: center;
+	padding: 10px 0;
+}
+
+h2 {
+	color: aqua;
+	text-align: center;
+	color: #6594e0;
+	border-bottom: dashed 2px #6594e0;
+}
+
+a {
+	color: white;
+	font-size: 25px;
+}
+
+img {
+	display: flex;
+	justify-content: space-between;
+	width: 300px;
+	height: 400px;
+}
+
+label {
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+input {
+	font-weight: bold;
+	border-style: none;
+}
+
+li {
+	list-style: none;
+	font-size: 25px;
+	margin: 10px 0px;
+	padding-right: 40px;
+}
+
+.flexes {
+	display: inline-block;
+	display: flex;
+	background-color: #222222;
+}
+
+.contents {
+	display: flex;
+	justify-content: space-between;
+}
+
+.content {
+	padding: 30px 15px;
+}
+
+.category {
+	display: none
+}
+
+.submit {
+	background-color: black;
+	color: white;
+	font-size: 18px;
+}
+
+.detail, .close-detail {
+	display: none;
+	color: white;
+}
+
+.show-detail, .close-detail {
+	opacity: 0.5;
+	color: white;
+	font-size: 20px;
+}
+
+.detail {
+	width: 300px;
+}
+
+.text {
+	font-size: 15px;
+	border-radius: 3px;
+}
+
+.categories, #comments, #recommends {
+	font-size: 30px;
+	padding: 10px 30px;
+	background-color: #222222;
+	color: white;
+	border-style: none;
+}
+
+#div-start {
+	text-align: center;
+}
+
+#start {
+	font-size: 100px;
+	border-style: none;
+	padding-top: 300px;
+	padding-bottom: 300px;
+	color: #6666CC;
+	background-color: black;
+	border-style: none;
+}
+
+#sidebar {
+	width: 250px;
+	height: 100%;
+	position: fixed;
+	color: #033560;
+	background: #fff;
+	text-align: center;
+	display: none;
+}
+
+#category {
+	font-size: 30px;
+	color: black;
+}
+
+#back {
+	font-size: 25px;
+	color: black;
+	font-weight: bold;
+	text-align: right;
+	margin-top: 30px;
+	margin-right: 30px;
+}
+</style>
+</head>
+<body>
+	<div id="div-start">
+		<button id="start">B-Movie</button>
+	</div>
+	<section>
+		<aside id="sidebar">
+			<h1 id="category">Category</h1>
+			<ul class="sub-menu-nav">
+				<li id="all">All</li>
+				<li id="action">Action</li>
+				<li id="horror">Horror</li>
+				<li id="drama">Drama</li>
+				<li id="sf">SF</li>
+			</ul>
+			<div id="back">Back</div>
+		</aside>
+		<div class="flexes">
+			<div class="flex">
+				<input class="categories" id="categories" type="submit"
+					th:value="Category"> <input class="categories category"
+					id="category0" type="submit" th:value="Action"> <input
+					class="categories category" id="category1" type="submit"
+					th:value="Horror"> <input class="categories category"
+					id="category2" type="submit" th:value="Drama"> <input
+					class="categories category" id="category3" type="submit"
+					th:value="SF">
+			</div>
+			<div class="flex">
+				<form th:action="@{/review}" method="get">
+					<input id="comments" type="submit" th:value="Comments">
+				</form>
+			</div>
+			<div class="flex">
+				<form th:action="@{/recommends}" method="get">
+					<input id="recommends" type="submit" th:value="Recommends">
+				</form>
+			</div>
+		</div>
+		<h1>〜B-Movie〜</h1>
+		<h2>映画まとめ</h2>
+		<div class="contents">
+			<div class="content drama">
+				<a
+					href="https://www.amazon.co.jp/５パーセントの奇跡-～嘘から始まる素敵な人生～（字幕版）-コスティヤ・ウルマン/dp/B07DHH2YTL"
+					target="_blank">5パーセントの奇跡<br> <img
+					src="img/81URE+8iIXL._RI_.jpg"></a><br>
+				<div class="show-detail">詳細...</div>
+				<div class="detail">「５つ星ホテルで働きたい!」先天性の病気で95％の視覚を失った青年サリーが夢を叶えるために一世一代の“大芝居”を打つ！なんと目が見えないということを隠して、一流ホテルで見習いを始めるというのだ。持ち前の明るさと機転を利かせ、周囲の助けも借りながら、ホテルの研修課題を次々とクリアしていくサリー。しかし、ラウラとの出会いにより、完璧だった偽装計画が徐々に綻び始めてしまう。果たして、無謀とも呼べる夢は叶うのか、そして恋の行方は-？</div>
+				<div class="close-detail">閉じる</div>
+				<form th:action="@{/confirm}" method="post">
+					<input type="hidden" name="confirm" value="0"> <input
+						class="text" name="comment" placeholder="コメントを入力"> <input
+						class="submit" type="submit" value="送信">
+				</form>
+			</div>
+			<div class="content horror">
+				<a
+					href="https://www.amazon.co.jp/REC%EF%BC%8Fレック-字幕版-マヌエラ・ベラスコ/dp/B074FGHDHB"
+					target="_blank">REC/レック<br> <img
+					src="img/410iYwgG1qL._AC_SY445_.jpg"></a><br>
+				<div class="show-detail">詳細...</div>
+				<div class="detail">TV局レポーターのアンヘラは消防士への密着取材中、あるアパートを訪れた。老婆が暴れているらしく、消防士や警官らが取り押さえようとするが、老婆は逆に警官に噛み付いてしまう。なんとか襲われた警官を助け出し、手当てのためにアパートの外に出ようとすると、出入り口はなぜか警察によって封鎖されていた。このアパートには何があるのか?そしてアンヘラたちが回し続けるカメラには、恐怖の一夜が映し出されることになる…。</div>
+				<div class="close-detail">閉じる</div>
+				<form th:action="@{/confirm}" method="post">
+					<input type="hidden" name="confirm" value="1"> <input
+						class="text" name="comment" placeholder="コメントを入力"> <input
+						class="submit" type="submit" value="送信">
+				</form>
+			</div>
+			<div class="content action">
+				<a href="https://www.amazon.co.jp/dp/B00FNFBHI6" target="_blank">レオン<br>
+					<img src="img/71UheDhDzFL._SX300_.jpg"></a><br>
+				<div class="show-detail">詳細...</div>
+				<div class="detail">凶暴な純愛がここに完結する。『グラン・ブルー』『二キータ』のリュック・ベッソン監督が、ニューヨークを舞台に放つアクション・エンタテインメント！アカデミー賞女優、ナタリー・ポートマン鮮烈のデビュー作。
+					家族を惨殺された12歳の少女マチルダは、隣の部屋に住む殺し屋レオンに助けを求める。戸惑いながらもマチルダに救いの手を差し出すレオン。そこから二人の奇妙な共同生活が始まった。弟の仇を討ちたいというマチルダにしかたなく殺しのテクニックを教えるレオンと、読み書きもできないレオンに文字を教えるマチルダ。やがて二人の間には父娘とも恋人ともつかない愛情が芽生えていくが…。</div>
+				<div class="close-detail">閉じる</div>
+				<form th:action="@{/confirm}" method="post">
+					<input type="hidden" name="confirm" value="2"> <input
+						class="text" name="comment" placeholder="コメントを入力"> <input
+						class="submit" type="submit" value="送信">
+				</form>
+			</div>
+			<div class="content drama">
+				<a href="https://www.amazon.co.jp/dp/B07P6N3KDC" target="_blank">ショーシャンクの空に<br>
+					<img src="img/71CHkAmxgBL._RI_.jpg"></a><br>
+				<div class="show-detail">詳細...</div>
+				<div class="detail">Ｓ・キングの“非ホラー小説“『刑務所のリタ・ヘイワース』の映画化。無実の罪でショーシャンク刑務所に入れられた主人公アンディ。もの静かな彼は、やがて自らの根源的な力と職能を武器に、刑務所の仲間たちに尊厳を取り戻していく。物語はそんなアンディの姿を親友レッドが語っていく形で綴られていく。レッドを演じるＭ・フリーマンの穏やかな中にも圧倒的な存在感をにじませた演技は、アカデミー賞やゴールデン・グローブ賞にノミネートされ高い評価を受けた。</div>
+				<div class="close-detail">閉じる</div>
+				<form th:action="@{/confirm}" method="post">
+					<input type="hidden" name="confirm" value="3"> <input
+						class="text" name="comment" placeholder="コメントを入力"> <input
+						class="submit" type="submit" value="送信">
+				</form>
+			</div>
+		</div>
+		<div class="contents">
+			<div class="content sf">
+				<a href="https://www.amazon.co.jp/第9地区-字幕版-シャルト・コプリー/dp/B00FIWIMP0"
+					target="_blank">第９地区<br> <img
+					src="img/51t6Q2cZK0L._SY450_.jpg"></a><br>
+				<div class="show-detail">詳細...</div>
+				<div class="detail">エイリアンが飛来したヨハネスブルグ。彼らは抵抗するでもなく、市街から離れたスラム地区に隔離されてしまう。そして今ひとりの人間が、この地球外生命体の謎に包まれた兵器テクノロジーに遭遇する。エイリアンが住み着く貧民窟、その異界と化した路地裏を追われ（狩られ）ながら、男はやがて、人類にとって今やアウトサイダーである己の運命を悟ることになる。</div>
+				<div class="close-detail">閉じる</div>
+				<form th:action="@{/confirm}" method="post">
+					<input type="hidden" name="confirm" value="4"> <input
+						class="text" name="comment" placeholder="コメントを入力"> <input
+						class="submit" type="submit" value="送信">
+				</form>
+			</div>
+			<div class="content sf">
+				<a href="https://www.amazon.co.jp/オデッセイ-字幕版-マット･デイモン/dp/B01EFKU8J8"
+					target="_blank">オデッセイ<br> <img
+					src="img/81wOxN2laPL._AC_SX342_.jpg"></a><br>
+				<div class="show-detail">詳細...</div>
+				<div class="detail">『プロメテウス』のリドリー・スコット監督が描く奇跡のSFサバイバル超大作！人類による有人火星探査計画＜アレス3＞が、荒れ狂う嵐によって中止に追い込まれた。ミッションに参加した6人のクルーは撤収を余儀なくされるが、そのひとりであるマーク・ワトニーは暴風に吹っ飛ばされ、死亡したと判断される。しかしワトニーは奇跡的に生きていた。独りぼっちで火星に取り残され、地球との交信手段もなく、次にNASAが有人機を送り込んでくるのは4年後。サバイバルに不可欠な食糧も酸素も水も絶対的に足りない。そのあまりにも過酷な現実を直視しながらも、ワトニーは決して生き延びることを諦めなかった。やがてワトニーの生存を知って衝撃を受けたNASAや同僚のクルーは、地球上のすべての人々が固唾をのんで見守るなか、わずかな可能性を信じて前代未聞の救出プランを実行するのだった……。</div>
+				<div class="close-detail">閉じる</div>
+				<form th:action="@{/confirm}" method="post">
+					<input type="hidden" name="confirm" value="5"> <input
+						class="text" name="comment" placeholder="コメントを入力"> <input
+						class="submit" type="submit" value="送信">
+				</form>
+			</div>
+			<div class="content sf">
+				<a href="https://www.amazon.co.jp/オブリビオン-吹替版-トム・クルーズ/dp/B075QZ8KZD"
+					target="_blank">オブリビオン<br> <img
+					src="img/A1xaAU4rZhL._RI_.jpg"></a><br>
+				<div class="show-detail">詳細...</div>
+				<div class="detail">なぜ、彼は人類のいない地球に残されたのか―？2077年、エイリアンの攻撃を受け、地球は全壊。生き残った人類は、他の惑星への移住を果たすが、ジャック（トム・クルーズ）は荒廃した地球に残り、パトロール機バブルシップをかり、高度1000メートルの上空から地球を監視している。ある日、ジャックは墜落した宇宙船で眠る美女ジュリア（オルガ・キュレンコ）を発見する。目を覚ました彼女は、なぜか逢ったことのないジャックの名を口にした。彼女に不思議な結びつきを感じながら、次第にあらゆる現実に疑問を抱くようになっていくジャック。</div>
+				<div class="close-detail">閉じる</div>
+				<form th:action="@{/confirm}" method="post">
+					<input type="hidden" name="confirm" value="6"> <input
+						class="text" name="comment" placeholder="コメントを入力"> <input
+						class="submit" type="submit" value="送信">
+				</form>
+			</div>
+			<div class="content action">
+				<a href="https://www.amazon.co.jp/オブリビオン-吹替版-トム・クルーズ/dp/B075QZ8KZD"
+					target="_blank">グランド・イルージョン<br> <img
+					src="img/81YZIPBFWxL._RI_.jpg"></a><br>
+				<div class="show-detail">詳細...</div>
+				<div class="detail">このトリックを見破れるか?! マジックのルール。誰よりも利口になれ。
+					4人のスーパーイリュージョニストチーム“フォーホースメン”。彼らはラスベガスでショーをしながら遠く離れたパリの銀行から金を奪い、観客を驚かせた。このことからFBIとインターポールから追われることになったホースメン。しかし彼らは誰よりも先を見ていた…。彼らはどうやって金を盗んだのか？
+					彼らの目的はいったい何なのか？ 最後のショーが終わる時、すべてのトリックが暴かれる！</div>
+				<div class="close-detail">閉じる</div>
+				<form th:action="@{/confirm7}" method="post">
+					<input type="hidden" name="confirm" value="7"> <input
+						class="text" name="comment" placeholder="コメントを入力"> <input
+						class="submit" type="submit" value="送信">
+				</form>
+			</div>
+		</div>
+	</section>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function() {
+			$('#start').on('click', function() {
+				$('section').fadeIn(5000);
+				$(this).hide();
+			});
+			$('li')
+					.click(
+							function() {
+								var id = $(this).attr('id');
+								if (id == "all") {
+									$('#categories').show();
+									$(
+											'.drama, .horror, .sf, #category0, #category1, #category2, #category3')
+											.hide();
+									$('.content').fadeIn(2000);
+								}
+								if (id == "action") {
+									$('#category0').show();
+									$(
+											'.drama, .horror, .sf, #categories, #category1, #category2, #category3')
+											.hide();
+									$('.action').fadeIn(2000);
+								}
+								if (id == "horror") {
+									$('#category1').show();
+									$(
+											'.action, .drama, .sf, #categories, #category0, #category2, #category3')
+											.hide();
+									$('.horror').fadeIn(2000);
+								}
+								if (id == "drama") {
+									$('#category2').show();
+									$(
+											'.action, .horror, .sf, #categories, #category0, #category1, #category3')
+											.hide();
+									$('.drama').fadeIn(2000);
+								}
+								if (id == "sf") {
+									$('#category3').show();
+									$(
+											'.action, .drama, .horror, #categories, #category0, #category1, #category2')
+											.hide();
+									$('.sf').fadeIn(2000);
+								}
+							});
+			$('.categories').on('click', function() {
+				$('#sidebar').show(500);
+			});
+			$('li, #back').on('click', function() {
+				$('#sidebar').hide(500);
+			});
+			$('.show-detail').on('click', function() {
+				$(this).nextAll('.detail, .close-detail').show(500);
+				$(this).hide();
+			});
+			$('.close-detail').on('click', function() {
+				$(this).prevAll('.detail').hide(500);
+				$(this).hide();
+				$(this).prevAll('.show-detail').show();
+			});
+			$('input, select, li, .show-detail, .close-detail, #back, #start')
+					.hover(function() {
+						$(this).css("cursor", "pointer");
+					});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<title>Confirm Page</title>
+<style>
+body {
+	background-color: black;
+	margin: 30px 0px;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+}
+
+.confirm {
+	margin: 30px 0px;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+}
+
+#back {
+	font-size: 40px;
+	font-weight: bold;
+	background-color: black;
+	color: white;
+	border-style: none;
+	font-weight: bold;
+}
+
+#comment {
+	font-size: 15px;
+	color: black;
+	border-radius: 3px;
+}
+
+#submit {
+	font-size: 20px;
+	font-weight: bold;
+	background-color: black;
+	color: white;
+	border-style: none;
+}
+</style>
+</head>
+<body>
+	<form th:action="@{/movie}" method="get">
+		<input id="back" class="return" type="submit" value="Back">
+	</form>
+	<div class="confirm">下記の内容で送信します</div>
+	<div class="confirm" th:text="${comment.comment}"></div>
+	<form th:action="@{/result}" method="post" th:object="${comment}">
+		<input type="hidden" name="result" th:value="${i}"> <input
+			id="comment" type="hidden" readonly th:value="*{comment}"
+			name="comment"> <input id="submit" type="submit">
+	</form>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function() {
+			$('.return, #submit').hover(function() {
+				$(this).css("cursor", "pointer");
+			});
+		});
+	</script>
+</body>
+</html>
